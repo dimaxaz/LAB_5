@@ -4,43 +4,77 @@
 
 using namespace std;
 
-void generate_adjacency_matrix(int n, int matrix[][10]) {
-    // Инициализируем матрицу смежности нулями
-    for (int i = 0; i < n; ++i) {
-        for (int j = 0; j < n; ++j) {
-            matrix[i][j] = 0;
+class Graph {
+private:
+    int n;
+    int** matrix;
+
+public:
+    Graph(int size) : n(size) {
+        matrix = new int* [n];
+        for (int i = 0; i < n; ++i) {
+            matrix[i] = new int[n];
         }
+        generate_adjacency_matrix();
     }
 
+    ~Graph() {
+        for (int i = 0; i < n; ++i) {
+            delete[] matrix[i];
+        }
+        delete[] matrix;
+    }
+
+    void generate_adjacency_matrix() {
+        for (int i = 0; i < n; ++i) {
+            for (int j = 0; j < n; ++j) {
+                matrix[i][j] = 0;
+            }
+        }
+
     // Заполняем матрицу случайными значениями
-    for (int i = 0; i < n; ++i) {
-        for (int j = i; j < n; ++j) {
-            if (i != j) {
-                int edge = rand() % 2;
-                matrix[i][j] = edge;
-                matrix[j][i] = edge;
+        for (int i = 0; i < n; ++i) {
+            for (int j = i; j < n; ++j) {
+                if (i != j) {
+                    int edge = rand() % 2;
+                    matrix[i][j] = edge;
+                    matrix[j][i] = edge;
+                }
             }
         }
     }
-}
 
-void print_matrix(int n, int matrix[][10]) {
-    for (int i = 0; i < n; ++i) {
-        for (int j = 0; j < n; ++j) {
-            cout << matrix[i][j] << " ";
+    void print_matrix() {
+        for (int i = 0; i < n; ++i) {
+            for (int j = 0; j < n; ++j) {
+                cout << matrix[i][j] << " ";
+            }
+            cout << endl;
         }
-        cout << endl;
     }
-}
+
+    int get_graph_size() {
+        return n;
+
+        //кол-во ребер
+        //int size = 0;
+        //while (matrix[size] != nullptr) {
+        //    size++;
+        //}
+        //return size;
+    }
+};
 
 int main() {
-    srand(time(0)); // Инициализация генератора случайных чисел
+    setlocale(LC_ALL, "");
+    srand(time(0));
 
-    int n = 5; // Количество вершин в графе
-    int matrix[10][10] = { 0 }; // Матрица смежности
+    int n = 10;
+    Graph graph(n);
 
-    generate_adjacency_matrix(n, matrix);
-    print_matrix(n, matrix);
+    graph.print_matrix();
+
+    cout << "Размер графа (количество вершин): " << graph.get_graph_size() << endl;
 
     return 0;
 }
