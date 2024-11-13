@@ -11,10 +11,10 @@ private:
 
 public:
     Graph(int size) : n(size), m(0) {
-        edges = new int* [n * n]; // Максимальное количество ребер
+        edges = new int* [n * n];
         incidence_matrix = new int* [n];
         for (int i = 0; i < n; ++i) {
-            incidence_matrix[i] = new int[n * n]; // Максимальное количество ребер
+            incidence_matrix[i] = new int[n * n];
             for (int j = 0; j < n * n; ++j) {
                 incidence_matrix[i][j] = 0;
             }
@@ -57,6 +57,13 @@ public:
             cout << endl;
         }
     }
+
+    void determine_graph_size() {
+        int num_vertices = n;
+        int num_edges = m;
+        cout << "Количество вершин: " << num_vertices << endl;
+        cout << "Количество ребер: " << num_edges << endl;
+    }
 };
 
 int main() {
@@ -73,6 +80,8 @@ int main() {
     graph.build_incidence_matrix();
 
     graph.print_incidence_matrix();
+
+    graph.determine_graph_size();
 
     return 0;
 }

@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="l_5.2.cpp" />
     <ClCompile Include="l_5.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
