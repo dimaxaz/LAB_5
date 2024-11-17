@@ -19,8 +19,18 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="l_5.2.cpp" />
-    <ClCompile Include="l_5.cpp" />
+    <ClCompile Include="Directed_Graph.cpp" />
+    <ClCompile Include="Graph.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Undirected_Graph.cpp" />
+    <ClCompile Include="Weighted_Graph.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Abstract_Graph.h" />
+    <ClInclude Include="Directed_Graph.h" />
+    <ClInclude Include="Graph.h" />
+    <ClInclude Include="Undirected_Graph.h" />
+    <ClInclude Include="Weighted_Graph.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
